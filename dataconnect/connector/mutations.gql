@@ -1,0 +1,57 @@
+mutation CreateParticipant(
+  $baselineAge: Int!,
+  $sex: Int!,
+  $region: Int!,
+  $zone: Int!,
+  $raceEthnicity: Int,
+  $educationLevel: Int
+) @auth(level: PUBLIC) {
+  participant_insert(data: {
+    baselineAge: $baselineAge,
+    sex: $sex,
+    region: $region,
+    zone: $zone,
+    raceEthnicity: $raceEthnicity,
+    educationLevel: $educationLevel
+  })
+}
+
+mutation CreateWaveMeasurement(
+  $participantId: UUID!,
+  $wave: Int!,
+  $ageYears: Int,
+  $weeklyActivityMinutes: Float,
+  $gripMaxKg: Float,
+  $gaitBestSeconds: Float,
+  $cancerSurvivor: Float,
+  $strokeSurvivor: Float,
+  $chronicSpineCondition: Float,
+  $strokeRehab: Float,
+  $frailtyScore: Float,
+  $frailtyGroup: String,
+  $frailBinary: Float,
+  $currentSmoker: Float,
+  $formerSmoker: Float,
+  $alcoholAny: Float,
+  $anyRehab90d: Float
+) @auth(level: PUBLIC) {
+  waveMeasurement_insert(data: {
+    participantId: $participantId,
+    wave: $wave,
+    ageYears: $ageYears,
+    weeklyActivityMinutes: $weeklyActivityMinutes,
+    gripMaxKg: $gripMaxKg,
+    gaitBestSeconds: $gaitBestSeconds,
+    cancerSurvivor: $cancerSurvivor,
+    strokeSurvivor: $strokeSurvivor,
+    chronicSpineCondition: $chronicSpineCondition,
+    strokeRehab: $strokeRehab,
+    frailtyScore: $frailtyScore,
+    frailtyGroup: $frailtyGroup,
+    frailBinary: $frailBinary,
+    currentSmoker: $currentSmoker,
+    formerSmoker: $formerSmoker,
+    alcoholAny: $alcoholAny,
+    anyRehab90d: $anyRehab90d
+  })
+}

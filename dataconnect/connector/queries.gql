@@ -1,0 +1,64 @@
+query ListParticipants($sex: Int, $region: Int, $zone: Int) @auth(level: PUBLIC) {
+  participants(where: {
+    sex: { eq: $sex },
+    region: { eq: $region },
+    zone: { eq: $zone }
+  }) {
+    id
+    baselineAge
+    sex
+    region
+    zone
+    educationLevel
+  }
+}
+
+query GetParticipantDetails($id: UUID!) @auth(level: PUBLIC) {
+  participant(id: $id) {
+    id
+    baselineAge
+    sex
+    region
+    zone
+    raceEthnicity
+    educationLevel
+    waveMeasurements_on_participant {
+      wave
+      ageYears
+      weeklyActivityMinutes
+      gripMaxKg
+      gaitBestSeconds
+      cancerSurvivor
+      strokeSurvivor
+      chronicSpineCondition
+      strokeRehab
+      frailtyScore
+      frailtyGroup
+      frailBinary
+      anyRehab90d
+    }
+  }
+}
+
+query ListWaveMeasurements($wave: Int, $frailBinary: Float) @auth(level: PUBLIC) {
+  waveMeasurements(where: {
+    wave: { eq: $wave },
+    frailBinary: { eq: $frailBinary }
+  }) {
+    id
+    wave
+    ageYears
+    weeklyActivityMinutes
+    gripMaxKg
+    gaitBestSeconds
+    frailtyScore
+    frailtyGroup
+    frailBinary
+    participant {
+      id
+      sex
+      region
+      zone
+    }
+  }
+}

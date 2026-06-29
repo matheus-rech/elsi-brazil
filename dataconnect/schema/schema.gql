@@ -1,0 +1,30 @@
+type Participant @table {
+  id: UUID! @default(expr: "uuidV4()")
+  baselineAge: Int!
+  sex: Int!
+  region: Int!
+  zone: Int!
+  raceEthnicity: Int
+  educationLevel: Int
+}
+
+type WaveMeasurement @table {
+  id: UUID! @default(expr: "uuidV4()")
+  participant: Participant!
+  wave: Int!
+  ageYears: Int
+  weeklyActivityMinutes: Float
+  gripMaxKg: Float
+  gaitBestSeconds: Float
+  cancerSurvivor: Float
+  strokeSurvivor: Float
+  chronicSpineCondition: Float
+  strokeRehab: Float
+  frailtyScore: Float
+  frailtyGroup: String
+  frailBinary: Float
+  currentSmoker: Float
+  formerSmoker: Float
+  alcoholAny: Float
+  anyRehab90d: Float
+}

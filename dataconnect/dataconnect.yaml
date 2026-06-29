@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "elsi-brazil-backend"
+location: "us-central1"
+schemaValidation: "STRICT"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "elsi_brazil_db"
+      cloudSql:
+        instanceId: "elsi-instance"
+connectorDirs: ["./connector"]
