@@ -185,5 +185,4 @@ async def run_chat():
 
 if __name__ == "__main__":
     # If running interactively, run:
-    # asyncio.run(run_chat())
-    pass
+    asyncio.run(run_chat())
